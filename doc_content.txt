@@ -1,0 +1,903 @@
+AUDIT SISTEM INFORMASI PELAYANAN ADMINISTRASI KEPENDUDUKAN BERBASIS FRAMEWORK ITIL V4 PADA DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL KABUPATEN MINAHASA UTARA
+
+
+
+SONDAKH, ANGGREINY MICHELA NISYE (105012310072)
+TOLOLIU, LOVELY HELLEN APRILIA (105012310035)
+⁠JONSEND, ARLAN GORBY (105012310036)
+MARCELLO BRYAN SIJADI (105012310010)
+TUEGEH, JULYANA ESTER (105012210013)
+
+
+
+FAKULTAS ILMU KOMPUTER
+UNIVERSITAS KLABAT
+APRIL 2026
+DAFTAR ISI 
+Isi
+DAFTAR ISIi
+BAB 1 PENDAHULUAN1
+1.1 Latar Belakang1
+1.2 Rumusan Masalah2
+1.3 Tujuan Penelitian3
+1.4 Ruang Lingkup dan Batasan Penelitian3
+1.4.1 Cakupan3
+1.4.2 Batasan Penelitian4
+BAB 2 LANDASAN TEORI6
+2.1 Audit Sistem Informasi6
+2.2 Information Technology Infrastructure Library V47
+2.3 Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara9
+2.3.1 Sistem Informasi Administrasi Kependudukan (SIAK)9
+2.3.2 Aplikasi SIGAP10
+2.4 Tata Kelola TI11
+2.5 ITIL V4 Practices12
+2.5.1 Incident Management12
+2.5.2. Change Enablement13
+2.5.3 Service Request Management13
+2.5.4 Information Security Management14
+2.5.5 Monitoring and Event Management14
+2.6 Dimensi ITIL V415
+2.6.1 Organisasi dan Orang (Organizations and People)15
+2.6.2 Informasi dan Teknologi (Information and Technology)15
+2.6.3 Mitra dan Pemasok (Partners and Suppliers)16
+2.6.4 Aliran Nilai dan Proses (Value Streams and Processes)16
+2.7 Langkah-Langkah Penerapan ITIL V417
+2.8 Prosedur Audit17
+BAB 3 KEY FINDING20
+3.1 Gambaran Umum Domain yang Diaudit21
+3.2 Temuan Utama Berdasarkan Domain ITIL V422
+3.3 Gap Analysis24
+3.4 Temuan Berdasarkan Empat Dimensi ITIL v426
+3.5 Business Impact27
+3.6 Root Cause Analysis27
+3.6.1 Akar Penyebab Utama28
+3.6.2 Table Hubungan Rumusan Masalah dan Akar Penyebab29
+BAB 4 KEY FINDING30
+4.1 Risk Context30
+4.2 Business Objective31
+4.3 Regulation and Standards32
+4.4 Identify Assets33
+4.5 Identify Threats33
+4.6 Possible Impact34
+4.7 Identify Vulnerabilities35
+4.8 Likelihood and Impact36
+4.9 Risk Tabel36
+BAB 5 RECOMMENDATION39
+5.1 Pendekatan Perbaikan39
+5.2 Rekomendasi Berdasarkan Risiko40
+5.3 Rekomendasi Per Domain Risiko41
+5.4 Traceability Matrix43
+5.5 Prioritas Implementasi45
+BAB 6 OVERALL ASSESSMENT46
+6.1 Overall Assessment Berdasarkan Domain Praktik ITIL v446
+6.2 Hasil Wawancara Dari Narasumber Bapak Jolly Tuwaidan48
+DAFTAR PUSTAKA52
+
+
+BAB 1PENDAHULUAN
+1.1 Latar Belakang
+Di era transformasi digital saat ini, tata kelola teknologi informasi (TI) telah menjadi pilar utama dalam efektivitas layanan publik di seluruh dunia. Pemerintah dituntut untuk menyediakan layanan yang cepat, transparan, dan aman melalui sistem informasi yang terintegrasi[1]. Standar internasional seperti ITIL V4 (Information Technology Infrastructure Library) menekankan bahwa manajemen layanan TI bukan sekadar masalah teknis, melainkan instrumen strategis untuk menciptakan nilai (value) bagi pengguna melalui pengelolaan risiko yang baik [2], ketersediaan layanan yang tinggi, serta perlindungan data yang ketat.
+Di Indonesia, implementasi digitalisasi pemerintahan salah satunya diwujudkan melalui sistem administrasi kependudukan yang dikelola oleh Dinas Kependudukan dan Pencatatan Sipil (Dukcapil). Sebagai instansi yang bertanggung jawab atas data sensitif masyarakat seperti Kartu Keluarga (KK), KTP, dan Akta Kelahiran, Dukcapil Minahasa Utara memiliki peran krusial dalam memastikan akurasi data yang terintegrasi dengan database nasional [3]. Untuk mendukung hal ini, Dukcapil Minahasa Utara telah menerapkan Sistem Informasi Administrasi Kependudukan (SIAK) yang terpusat [4] serta mengembangkan aplikasi mandiri bernama SIGAP untuk mempercepat pelayanan digital.
+Namun, dalam operasionalnya, masih terdapat kesenjangan signifikan antara kondisi ideal dengan realitas di lapangan. Berdasarkan analisis risiko awal, ditemukan masalah kritis berupa ketergantungan tinggi pada jaringan internet yang sering mengalami gangguan akibat faktor eksternal, yang menyebabkan pelayanan terhenti secara total. Selain itu, terdapat risiko human error pada penginputan data vital penduduk dan pembatasan hak akses sistem yang menyebabkan operasional sangat bergantung pada operator tertentu. Aplikasi SIGAP yang saat ini masih dalam tahap pengembangan juga menambah risiko ketidakstabilan layanan bagi masyarakat.
+Melihat kompleksitas risiko tersebut, audit sistem informasi menggunakan framework ITIL V4 menjadi sangat mendesak untuk dilakukan [5]. Audit ini diperlukan untuk mengevaluasi manajemen hak akses, menilai ketersediaan infrastruktur jaringan, serta menjamin akurasi informasi kependudukan sesuai dengan prinsip keamanan data pribadi. Dengan perencanaan audit dan analisis risiko yang mendalam, diharapkan Dukcapil Minahasa Utara dapat menyusun rencana mitigasi yang tepat untuk meningkatkan kualitas pelayanan publik dan melindungi integritas data penduduk secara berkelanjutan [2].
+1.2 Rumusan Masalah
+Berdasarkan latar belakang yang telah diuraikan, rumusan masalah utama dalam penelitian ini adalah bagaimana mengevaluasi efektivitas dan keamanan layanan teknologi informasi di Dukcapil Minahasa Utara—khususnya pada operasional sistem SIAK dan aplikasi SIGAP—dengan menggunakan framework ITIL V4 guna memitigasi risiko gangguan jaringan, meminimalisir human error dalam penginputan data, serta mengoptimalkan manajemen hak akses demi menjamin keberlangsungan pelayanan publik yang akurat dan aman.
+1.3 Tujuan Penelitian
+Tujuan utama dari penelitian ini adalah untuk melakukan evaluasi menyeluruh terhadap sistem informasi di Dukcapil Minahasa Utara menggunakan framework ITIL V4 guna memastikan keamanan data pribadi penduduk dari akses yang tidak sah, menilai tingkat ketersediaan (availability) infrastruktur jaringan dalam mendukung pelayanan tanpa gangguan teknis, menjamin akurasi informasi kependudukan melalui penguatan kontrol validasi sistem untuk meminimalisir human error, serta mengukur efisiensi sistem SIAK dan SIGAP dalam mempercepat proses pelayanan publik dan pengarsipan digital
+1.4 Ruang Lingkup dan Batasan Penelitian
+Penelitian ini memiliki ruang lingkup yang ditetapkan untuk mencapai tujuan yang diinginkan. Agar jangkauan penelitian tidak terlalu luas, peneliti menetapkan cakupan dan Batasan penelitian sebagai berikut:
+1.4.1 Cakupan 
+Penelitian ini difokuskan pada beberapa area kunci operasional di Dukcapil Minahasa Utara sebagai berikut:
+Sistem Pelayanan Digital: Melakukan audit operasional terhadap Sistem Informasi Administrasi Kependudukan (SIAK) dan aplikasi layanan mandiri SIGAP.
+Manajemen Hak Akses: Mengevaluasi pembagian level akses operator berdasarkan Surat Keputusan (SK) Kepala Dinas dan prosedur keamanan login.
+Integritas dan Validasi Data: Meninjau prosedur input data guna memitigasi risiko human error seperti kesalahan penulisan identitas atau jenis kelamin.
+Keamanan dan Infrastruktur Jaringan: Memeriksa ketersediaan jaringan, termasuk penggunaan redundansi Telkom Fiber, serta upaya pengamanan data lokal dari risiko kebocoran.
+Pemeliharaan dan Pengembangan: Mengevaluasi jadwal pembaruan (update) aplikasi SIGAP yang masih dalam tahap uji coba serta efektivitas pelatihan internal (in-house training) bagi para operator.
+1.4.2 Batasan Penelitian
+Agar penelitian ini tetap fokus dan terarah, batasan-batasan yang ditetapkan adalah sebagai berikut:
+Audit pada aplikasi SIGAP hanya terbatas pada evaluasi manajemen perubahan dan kesiapan adaptasi sistem, dikarenakan status aplikasi yang masih dalam tahap pengembangan dan uji coba.
+Evaluasi terhadap gangguan pada server pusat hanya dilakukan sebatas koordinasi dan prosedur mitigasi lokal, mengingat sistem database pusat berada di luar kendali langsung Dukcapil Minahasa Utara.
+Audit manajemen akses hanya difokuskan pada operator yang memiliki Surat Keputusan (SK) resmi dari Kepala Dinas.
+Pemeriksaan infrastruktur jaringan dibatasi pada ketersediaan dan penggunaan redundansi Telkom Fiber di lingkungan kantor Dukcapil, tidak mencakup infrastruktur penyedia layanan internet secara global.
+Penelitian ini lebih menitikberatkan pada penilaian kontrol operasional, prosedur validasi, dan manajemen risiko, serta tidak mencakup pengujian penetrasi teknis (penetration testing) yang mendalam terhadap keamanan kernel sistem.
+
+
+BAB 2LANDASAN TEORI
+
+2.1 Audit Sistem Informasi
+Audit sistem informasi merupakan sebuah proses sistematis yang melibatkan pengumpulan serta evaluasi bukti-bukti untuk menentukan apakah sebuah sistem komputer dan infrastruktur teknologi informasi yang digunakan oleh organisasi telah mampu mengamankan aset serta menjaga integritas data secara optimal [3]. Dalam pelaksanaannya, audit ini bertujuan untuk memastikan bahwa sistem yang beroperasi telah mendukung pencapaian tujuan organisasi secara efektif serta menggunakan sumber daya yang tersedia secara efisien [5]. Pada instansi pelayanan publik seperti Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara, audit sistem informasi memegang peranan krusial sebagai instrumen pengawasan untuk memverifikasi bahwa teknologi yang digunakan telah memiliki kontrol internal yang memadai guna memitigasi berbagai risiko operasional yang mungkin muncul.
+Fokus utama dalam audit sistem informasi mencakup beberapa aspek mendasar yang saling berkaitan, dimulai dari aspek keamanan informasi yang bertujuan mengevaluasi perlindungan terhadap data sensitif masyarakat serta memastikan manajemen hak akses telah sesuai dengan kebijakan otoritas resmi. Selain itu, audit juga menitikberatkan pada aspek ketersediaan atau availability, di mana auditor akan menilai sejauh mana infrastruktur teknologi seperti jaringan internet dan perangkat pendukung lainnya mampu menjamin keberlangsungan layanan publik tanpa adanya gangguan teknis yang berarti. Integritas data juga menjadi poin evaluasi yang sangat penting untuk memastikan bahwa mekanisme kontrol dalam sistem cukup kuat untuk mencegah terjadinya kesalahan manusia dalam proses input data, sehingga informasi kependudukan yang dihasilkan tetap akurat dan valid.
+Dengan mengadopsi kerangka kerja ITIL V4, audit sistem informasi tidak lagi hanya dipandang sebagai pemeriksaan teknis pada perangkat keras atau perangkat lunak semata, melainkan berkembang menjadi sebuah evaluasi holistik terhadap manajemen layanan teknologi informasi. Audit ini berusaha melihat bagaimana seluruh komponen teknologi berinteraksi dengan sumber daya manusia dan proses bisnis untuk menciptakan nilai nyata bagi masyarakat sebagai pengguna layanan [2]. Melalui pendekatan ini, hasil audit akan memberikan gambaran yang komprehensif mengenai kematangan tata kelola teknologi informasi di instansi terkait, sekaligus memberikan landasan bagi pimpinan dalam mengambil kebijakan strategis untuk perbaikan layanan di masa mendatang.
+2.2 Information Technology Infrastructure Library V4
+ITIL V4 merupakan versi terbaru dari kerangka kerja Information Technology Infrastructure Library yang dirancang untuk membantu organisasi menghadapi tantangan manajemen layanan teknologi informasi di era digital modern. Berbeda dengan versi sebelumnya yang lebih kaku pada proses, ITIL V4 memperkenalkan pendekatan yang lebih holistik dengan fokus utama pada penciptaan nilai bersama atau value co-creation antara penyedia layanan dan pemangku kepentingan [2]. Framework ini menyediakan panduan praktis yang memungkinkan instansi seperti Dukcapil Minahasa Utara untuk mengintegrasikan berbagai metode kerja guna memastikan bahwa setiap layanan teknologi yang diberikan, baik itu melalui sistem SIAK maupun aplikasi SIGAP, benar-benar memberikan manfaat nyata bagi efisiensi administrasi Masyarakat [6].
+Salah satu komponen utama dalam ITIL V4 adalah empat dimensi manajemen layanan yang mencakup organisasi dan orang, informasi dan teknologi, mitra dan pemasok, serta aliran nilai dan proses. Keempat dimensi ini harus dikelola secara seimbang agar layanan teknologi dapat berjalan optimal dan terhindar dari kegagalan fungsional. Dalam konteks audit ini, dimensi organisasi dan orang digunakan untuk mengevaluasi kompetensi operator serta struktur hak akses, sementara dimensi informasi dan teknologi digunakan untuk membedah keandalan infrastruktur jaringan internet dan stabilitas database pusat. Dengan memperhatikan keempat dimensi ini, auditor dapat mengidentifikasi hambatan yang tidak hanya bersifat teknis tetapi juga bersifat organisasional [2].
+Selain itu, ITIL V4 memperkenalkan konsep Service Value System (SVS) yang menjelaskan bagaimana seluruh komponen dan aktivitas dalam organisasi bekerja sama sebagai satu kesatuan untuk memfasilitasi penciptaan nilai. Di dalam SVS terdapat tujuh prinsip panduan, praktik-praktik manajemen, serta tata kelola yang mendukung fleksibilitas dalam menghadapi perubahan kebutuhan layanan publik. Penggunaan ITIL V4 sebagai landasan audit memberikan keunggulan karena framework ini sangat menekankan pada manajemen risiko dan keberlanjutan layanan, yang sangat relevan untuk mengatasi permasalahan gangguan konektivitas dan human error yang ditemukan pada operasional harian di Dukcapil Minahasa Utara.
+2.3 Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara
+Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara merupakan instansi pemerintah daerah yang bertanggung jawab penuh atas penyelenggaraan administrasi kependudukan di wilayah Kabupaten Minahasa Utara. Sebagai organisasi yang bergerak di bidang pelayanan publik, instansi ini sangat bergantung pada infrastruktur teknologi informasi untuk mengelola data kependudukan secara digital mulai dari proses pendaftaran, pengolahan, hingga penerbitan dokumen resmi. Fokus utama teknologi informasi di Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara adalah memastikan bahwa seluruh layanan administrasi dapat diakses secara efisien oleh masyarakat dengan menjamin integritas serta kerahasiaan data pribadi yang tersimpan dalam sistem. Mengingat peran strategisnya tersebut, tata kelola teknologi informasi di instansi ini memerlukan pengawasan berkala melalui proses audit guna mengidentifikasi hambatan teknis seperti gangguan konektivitas internet dan risiko operasional lainnya agar kualitas pelayanan publik tetap terjaga secara konsisten.
+2.3.1 Sistem Informasi Administrasi Kependudukan (SIAK)
+Sistem Informasi Administrasi Kependudukan atau SIAK merupakan pilar utama dalam digitalisasi kependudukan di Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara yang berfungsi sebagai sistem terintegrasi untuk menyatukan database kependudukan dari tingkat daerah hingga ke tingkat nasional [4]. SIAK dirancang untuk menghasilkan satu data kependudukan yang akurat melalui pemanfaatan teknologi informasi dan komunikasi yang tersentralisasi di bawah kendali kementerian terkait. Dalam operasionalnya di Minahasa Utara, SIAK digunakan oleh para operator untuk melakukan validasi data, pembersihan data ganda, serta pencetakan dokumen kependudukan yang bersifat rahasia dan negara. Mengingat sifatnya yang terpusat, performa SIAK di daerah sangat bergantung pada sinkronisasi server dan kestabilan akses jaringan internet. Audit pada sub-sistem ini difokuskan pada integritas proses penginputan data untuk menghindari kesalahan manusia serta pemenuhan standar keamanan akses agar data pribadi masyarakat tetap terlindungi dari ancaman kebocoran atau penyalahgunaan oleh pihak yang tidak berwenang.
+2.3.2 Aplikasi SIGAP
+Sebagai bentuk inovasi lokal dalam menghadapi tuntutan pelayanan yang lebih cepat dan fleksibel, Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara mengembangkan aplikasi SIGAP sebagai platform layanan mandiri bagi masyarakat. Aplikasi SIGAP berfungsi sebagai jembatan digital yang memungkinkan warga melakukan permohonan dokumen secara daring tanpa harus mengantre secara fisik di kantor dinas, sehingga menciptakan efisiensi yang signifikan dalam alur kerja birokrasi dan meminimalisir kerumunan di ruang pelayanan. Namun, karena kedudukannya sebagai aplikasi yang masih dalam tahap pengembangan dan penyempurnaan fitur, SIGAP memerlukan pengawasan khusus dalam aspek manajemen perubahan dan stabilitas sistem untuk memastikan keandalannya saat digunakan oleh publik. Audit terhadap aplikasi SIGAP bertujuan untuk mengevaluasi sejauh mana aplikasi ini dapat beroperasi secara konsisten dan terintegrasi dengan baik tanpa menimbulkan redundansi data atau celah keamanan baru pada ekosistem TI instansi. Penilaian dilakukan terhadap kesiapan fungsionalitas aplikasi, prosedur pemeliharaan teknis, serta kemudahan akses bagi pengguna akhir guna menjamin bahwa inovasi digital ini benar-benar memberikan nilai tambah bagi kualitas pelayanan publik di Kabupaten Minahasa Utara.
+
+2.4 Tata Kelola TI
+Tata kelola Teknologi Informasi (TI) merupakan seperangkat struktur dan mekanisme yang memastikan pemanfaatan teknologi informasi selaras dengan strategi instansi, memberikan nilai tambah bagi pelayanan publik, serta mampu mengelola risiko TI yang mungkin timbul dalam operasional harian [1]. Dalam organisasi pemerintahan seperti Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara, tata kelola TI berperan penting dalam mendukung kelancaran proses digitalisasi administrasi kependudukan, menjaga keamanan data sensitif penduduk, serta memastikan layanan aplikasi seperti SIAK dan SIGAP berjalan stabil serta konsisten dengan regulasi kependudukan yang berlaku [3]. Penerapan tata kelola TI yang baik memungkinkan Dukcapil Minahasa Utara meningkatkan kualitas layanan digital, menjaga integritas informasi identitas warga, serta memastikan proses pengembangan dan operasional teknologi berjalan secara terstandarisasi guna meminimalisir kendala teknis dalam pelayanan Masyarakat [7].
+2.5 ITIL V4 Practices
+ITIL V4 memperkenalkan tiga puluh empat praktik manajemen yang mencakup manajemen umum, manajemen layanan, dan manajemen teknis untuk memastikan terciptanya nilai dalam setiap layanan TI [2]. Penelitian ini berfokus pada lima praktik yang paling relevan dengan proses operasional dan pemeliharaan sistem pada Dukcapil Minahasa Utara, yaitu Incident Management, Change Enablement, Service Request Management, Information Security Management, serta Monitoring and Event Management [8].
+2.5.1 Incident Management
+Incident Management bertujuan memulihkan layanan normal sesegera mungkin setelah terjadi gangguan atau penurunan kualitas layanan agar dampak terhadap masyarakat dapat diminimalisir [2]. Dalam konteks Dukcapil Minahasa Utara, insiden dapat berupa kegagalan akses ke database pusat SIAK, gangguan jaringan internet lokal, atau kendala teknis pada aplikasi SIGAP yang menghambat pencetakan dokumen. Praktik ini mencakup tahapan identifikasi dan pencatatan insiden, kategorisasi dan penentuan prioritas berdasarkan dampak pelayanan, diagnosis awal, eskalasi kepada teknisi pusat jika diperlukan, hingga pemulihan layanan serta dokumentasi evaluasi. Saat ini, penanganan insiden di Dukcapil Minahasa Utara masih sering dilakukan secara informal tanpa mekanisme pencatatan yang terstruktur, di mana gangguan kecil seringkali diselesaikan tanpa adanya dokumentasi formal dalam sistem logging yang terintegrasi.
+2.5.2. Change Enablement
+Change Enablement memastikan setiap perubahan pada aplikasi atau layanan TI dilakukan secara terkontrol, aman, dan terdokumentasi guna menghindari kegagalan system [2]. Aktivitas utamanya mencakup dokumentasi perubahan, analisis risiko terhadap dampak layanan, proses peninjauan dan persetujuan oleh pimpinan, implementasi perubahan, serta evaluasi pasca perubahan dilakukan. Di Dukcapil Minahasa Utara, perubahan sistem seperti pembaruan versi SIAK atau pengembangan fitur pada aplikasi SIGAP memerlukan analisis risiko yang matang agar tidak mengganggu data yang sudah ada, namun pada pelaksanaannya proses dokumentasi formal terkait analisis risiko perubahan ini masih perlu ditingkatkan agar selaras dengan praktik terbaik manajemen layanan TI.
+2.5.3 Service Request Management 
+Service Request Management mengelola berbagai permintaan layanan dari pengguna sistem secara terstruktur untuk menjamin efisiensi alur kerja [2]. Proses ini meliputi pencatatan permintaan dari operator atau masyarakat, kategorisasi jenis layanan, penentuan prioritas berdasarkan tingkat urgensi, pemenuhan permintaan sesuai prosedur, serta pemberian informasi status kepada pengguna. Pada operasional Dukcapil Minahasa Utara, permintaan layanan teknis dari operator seringkali masih disampaikan melalui saluran komunikasi informal sehingga menyulitkan proses pelacakan status dan evaluasi waktu penyelesaian permintaan secara akurat.
+2.5.4 Information Security Management
+Information Security Management bertujuan menjaga kerahasiaan, integritas, dan ketersediaan data penduduk dalam setiap layanan TI yang diberikan kepada masyarakat [2]. Fokus utama dari praktik ini di Dukcapil Minahasa Utara meliputi penerapan enkripsi data, penguatan kontrol akses operator berdasarkan tingkat kewenangan, mekanisme cadangan data untuk mengantisipasi kerusakan sistem, serta kebijakan keamanan aplikasi secara menyeluruh. Meskipun instansi telah menggunakan jalur komunikasi terenkripsi dan prosedur login tertentu, kebijakan keamanan informasi yang terdokumentasi secara formal dan menyeluruh sangat diperlukan untuk memitigasi risiko kebocoran data identitas warga yang bersifat sensitif.
+2.5.5 Monitoring and Event Management
+Monitoring and Event Management membantu mendeteksi gangguan layanan secara dini dan mengawasi performa infrastruktur teknologi secara berkelanjutan [2]. Proses ini mencakup pemantauan performa jaringan internet Telkom Fiber, pengelolaan catatan aktivitas sistem, identifikasi kesalahan koneksi ke server pusat, serta pemberian peringatan dini jika terjadi kegagalan sistem. Dukcapil Minahasa Utara saat ini mengandalkan pemantauan langsung pada ketersediaan koneksi internet dan status server SIAK untuk memastikan pelayanan tetap berjalan, namun diperlukan platform monitoring yang lebih terintegrasi untuk mendeteksi potensi masalah sebelum benar-benar berdampak pada terhentinya pelayanan publik.
+2.6 Dimensi ITIL V4
+Dimensi ITIL merupakan empat perspektif utama yang perlu dipertimbangkan secara seimbang guna memastikan keberhasilan manajemen layanan TI dalam menciptakan nilai bagi organisasi dan masyarakat [2]. Model empat dimensi ini berperan penting dalam memberikan pendekatan yang holistik dan terintegrasi baik dalam perencanaan maupun perbaikan layanan kependudukan di Dukcapil Minahasa Utara. Setiap faktor yang mempengaruhi penciptaan nilai bagi masyarakat dihitung secara menyeluruh melalui dimensi Organisasi dan Orang, Informasi dan Teknologi, Mitra dan Pemasok, serta Aliran Nilai dan Proses. 
+2.6.1 Organisasi dan Orang (Organizations and People)
+Dimensi ini membahas pihak-pihak yang terlibat dalam operasional layanan di Dukcapil Minahasa Utara, termasuk struktur organisasi, pembagian peran, tanggung jawab, serta keterampilan yang dimiliki oleh para operator sistem. Fokus utamanya adalah memastikan bahwa setiap individu yang menjalankan proses manajemen layanan memahami perannya masing-masing, memiliki kompetensi yang sesuai melalui pelatihan internal, serta mampu berkontribusi terhadap pencapaian target pelayanan harian. Penekanan dimensi ini terletak pada keselarasan antara kompetensi operator dengan kebijakan akses yang ditetapkan oleh Kepala Dinas agar pelayanan berjalan tertib dan akuntabel.
+2.6.2 Informasi dan Teknologi (Information and Technology)
+Dimensi ini berfokus pada bagaimana informasi data penduduk dikelola serta dimanfaatkan melalui infrastruktur teknologi pendukung agar layanan dapat berjalan secara andal dan aman. Ruang lingkupnya mencakup aplikasi SIAK dan SIGAP, integritas basis data, arsitektur jaringan komunikasi data, serta alat pemantauan yang dibutuhkan agar proses administrasi kependudukan tetap berkelanjutan. Selain aspek teknis, dimensi ini juga menekankan pentingnya perlindungan keamanan informasi dan adaptasi terhadap inovasi teknologi digital untuk meningkatkan efisiensi pelayanan di Kabupaten Minahasa Utara.
+2.6.3 Mitra dan Pemasok (Partners and Suppliers)
+Dimensi ini menyoroti peran pihak eksternal yang bekerja sama dengan Dukcapil Minahasa Utara, seperti penyedia layanan internet dan vendor pengembang infrastruktur jaringan. Tujuan utamanya adalah memastikan bahwa hubungan kerja dengan mitra penyedia layanan internet seperti Telkom Fiber terkelola dengan baik agar kualitas koneksi yang menjadi syarat utama berjalannya sistem SIAK tetap stabil. Pengelolaan hubungan yang efektif dengan pihak ketiga diperlukan agar risiko operasional akibat gangguan infrastruktur dari pihak luar dapat diminimalkan melalui koordinasi yang tepat.
+2.6.4 Aliran Nilai dan Proses (Value Streams and Processes)
+Dimensi ini melihat bagaimana alur kerja pelayanan dari pendaftaran hingga penerbitan dokumen memberikan nilai nyata bagi masyarakat di Kabupaten Minahasa Utara. Fokus utamanya adalah memastikan bahwa setiap langkah dalam proses layanan, mulai dari input data hingga validasi, dirancang dengan struktur yang efisien guna meminimalkan pemborosan waktu dan menghindari kesalahan manusia. Alur kerja yang jelas sangat penting agar seluruh aktivitas pelayanan saling terhubung dan berorientasi pada kecepatan serta akurasi dokumen yang diterima oleh masyarakat.
+2.7 Langkah-Langkah Penerapan ITIL V4
+Dalam konteks audit layanan TI di Dukcapil Minahasa Utara, penerapan ITIL V4 dilakukan melalui beberapa langkah sistematis yang disesuaikan dengan prinsip Service Value System (SVS). Langkah-langkah tersebut dimulai dengan mengidentifikasi kebutuhan layanan TI dan kondisi aktual melalui observasi serta wawancara dengan pihak pengelola untuk memahami kendala operasional yang sering terjadi. Selanjutnya, dilakukan penetapan praktik ITIL V4 yang paling relevan sebagai ruang lingkup audit, diikuti dengan analisis kesenjangan (gap analysis) untuk membandingkan kondisi riil dengan standar praktik terbaik. Tahapan berikutnya mencakup analisis akar penyebab (Root Cause Analysis) terhadap permasalahan yang ditemukan, perancangan rekomendasi perbaikan proses layanan, hingga pelaksanaan evaluasi berkelanjutan untuk memastikan peningkatan kualitas layanan kependudukan secara permanen.
+2.8 Prosedur Audit
+Prosedur audit dalam penelitian ini disusun secara sistematis melalui empat tahapan utama, yaitu Perencanaan Audit, Pengumpulan Data, Analisis dan Evaluasi, serta Penyusunan Rekomendasi. Adapun tahapan tersebut dijelaskan sebagai berikut:
+Perencanaan Audit: Tahap perencanaan dilakukan untuk menentukan arah, ruang lingkup, dan kebutuhan audit. Aktivitas yang dilakukan meliputi: 
+a) Menetapkan objek audit, yaitu proses layanan TI pada sistem SIAK dan aplikasi SIGAP di Dukcapil Minahasa Utara. 
+b) Menentukan ruang lingkup audit berdasarkan lima praktik ITIL V4: Incident Management, Change Enablement, Service Request Management, Information Security Management, dan Monitoring & Event Management. 
+c) Menyusun instrumen wawancara, indikator evaluasi, serta daftar pertanyaan audit yang relevan dengan praktik ITIL V4 dan kebutuhan layanan kependudukan. 
+d) Mengidentifikasi dokumen pendukung berupa Surat Keputusan (SK) hak akses, laporan gangguan jaringan, catatan harian layanan, dan dokumentasi teknis aplikasi SIGAP.
+Pengumpulan Data: Tahap ini dilakukan untuk memperoleh data empiris terkait proses layanan TI melalui metode berikut:
+a) Wawancara daring maupun luring dengan Kepala Dinas, Kepala Bidang PIAK, serta operator sistem untuk mendapatkan informasi terkait prosedur layanan TI yang berjalan. 
+b) Observasi dokumen internal, termasuk laporan kesalahan input data penduduk, log gangguan koneksi internet, serta dokumen pemeliharaan rutin aplikasi SIGAP. 
+
+c) Peninjauan proses teknis, seperti:
+i) Pengelolaan hak akses operator berdasarkan level kewenangan dalam sistem SIAK. 
+ii) Monitoring ketersediaan jaringan internet melalui redundansi Telkom Fiber. 
+iii) Mekanisme pengamanan data kependudukan dan prosedur pencadangan (backup) data lokal.
+Analisis dan Evaluasi: Tahap ini digunakan untuk menilai kesesuaian proses layanan TI dengan standar ITIL V4 melalui langkah-langkah berikut: 
+a) Analisis akar penyebab (Root Cause Analysis) untuk  mengidentifikasi penyebab utama permasalahan proses layanan, seperti gangguan jaringan dan human error. 
+b) Analisis kesenjangan (gap analysis) dengan membandingkan kondisi aktual layanan di Dukcapil Minut dengan ketentuan praktik terbaik ITIL V4. 
+c) Pengelompokan temuan audit berdasarkan lima praktik ITIL V4 untuk memudahkan evaluasi yang terstruktur terhadap layanan SIAK dan SIGAP.
+Penyusunan Rekomendasi: Tahap akhir audit dilakukan untuk menghasilkan rekomendasi perbaikan yang relevan dan dapat diterapkan oleh Dukcapil Minahasa Utara, melalui: 
+a) Penyusunan rekomendasi berbasis ITIL V4 untuk meningkatkan efektivitas pengelolaan insiden, kontrol perubahan aplikasi, keamanan informasi, serta pemantauan layanan secara terintegrasi. 
+b) Identifikasi risiko dan dampak layanan bagi masyarakat jika permasalahan teknis dan administratif tidak segera diperbaiki. 
+c) Penyusunan laporan audit secara menyeluruh sebagai dasar pertimbangan manajemen Dukcapil Minahasa Utara untuk pengambilan keputusan strategis.
+
+BAB 3KEY FINDING 
+
+Bab ini menyajikan hasil utama audit layanan teknologi informasi pada Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara dengan berfokuas pada lima praktik inti dalam ITIL V4, yaitu Incident Management, Change Enablement, Service Request Management, Information Security Management, serta Monitoring & Event Management. Temuan audit ini diperoleh melalui wawancara dengan Bapak Jolly Tuwaidan, observasi langsung terhadap proses pelayanan, serta peninjauan dokumen seperti laporan gangguan system, hak akses pengguna dan aktivitas operasional sistem SIAK dan SIGAP.
+Secara umum, audit menunjukkan bahwa pelayanan teknologi informasi telah berjalan dan mendukung proses palayanan administrasi kependudukan. Namun, Sebagian besar pross masih dilakukan secara informal dan belum terdokumentasi secara konsisten. Selain itu, belum tersedia prosedur baku seperti Standard Operating Procedure (SOP) maupun Service Level Agreement (SLA) yang menjadi landasan formal dalam pengelolaan layanan.
+3.1 Gambaran Umum Domain yang Diaudit
+
+Tabel 3.1 Gambara umum Domain yang Diaudit
+Domain
+Penjelasan
+Incident Management
+Berfokus pada penanganan gangguan sistem seperti jaringan dan akses SIAK
+Change Enablement
+Berfokus pada pengelolaan perubahan pada sistem SIGAP dan update dari pusat
+Service Request Management
+Berfokus pada pengelolaan pelayanan administrasi kependudukan 
+Information Security Management
+Berfokus pada keamanan data dan hak akses
+Monitoring & Event Management
+Berfokus pada pemantauan aktivitas dan gangguan layanan
+Tabel ini menunjukkan ruang lingkup audit yang difokuskan pada lima domain utama dalam ITIL V4. Pemilihan domain didasarkan pada hasil wawancara yang menunjukkan bahwa operasional Dukcapil sangat bergantung pada sistem informasi, khususnya dalam penanganan gangguan, perubahan sistem pengelolaan layanan, keamanan data, dan monitoring aktivitas sistem. Hal ini menunjukkan bahwa audit tidak hanya melihat aspek teknis, tetapi juga proses layanan secara menyeluruh.
+3.2 Temuan Utama Berdasarkan Domain ITIL V4
+
+Tabel 3.2 Temuan Utama Berdasarkan Domain ITIL V4 
+Domain
+Kondisi Aktual
+Kekuatan
+Kelemahan
+Dampak
+Incident Management
+Gangguan layanan pernah terjadi akibat jaringan; awalnya hanya menggunakan satu provider (Telkom Fiber), kemudian ditingkatkan menjadi dua provider; penanganan gangguan dilakukan langsung oleh operator tanpa prosedur formal
+Adanya peningkatan infrastruktur jaringan serta kemampuan operator dalam menangani gangguan secara langsung
+Tidak terdapat SOP penanganan insiden, tidak ada pencatatan insiden (incident log), serta tidak ada klasifikasi prioritas ganggu
+Gangguan dapat menghambat pelayanan, sulit dilakukan evaluasi insiden, dan berpotensi menyebabkan kejadian berulan
+Change Enablement
+Sistem mengalami pembaruan secara berkala, baik dari pusat maupun pada aplikasi SIGAP yang telah di-update beberapa kali dan masih dalam tahap pengembangan
+Adanya pembaruan sistem secara berkala menunjukkan upaya peningkatan layanan dan adaptasi terhadap kebutuhan
+Tidak terdapat dokumentasi perubahan, tidak ada analisis risiko sebelum perubahan, serta evaluasi perubahan belum dilakukan secara terstruktur
+Perubahan sistem berpotensi menimbulkan gangguan baru dan sulit dikontrol apabila terjadi kesalahan
+Service Request Management
+Seluruh layanan administrasi kependudukan (KTP, KK, akta kelahiran, dll) telah menggunakan SIAK, namun aplikasi SIGAP hanya mencakup sebagian layanan dan masih terbatas
+Sistem SIAK sudah mendukung seluruh layanan utama sehingga pelayanan tetap berjalan
+SIGAP belum mencakup semua layanan, belum terintegrasi penuh, serta tidak terdapat sistem pencatatan permintaan layanan atau standar waktu layanan
+Layanan digital belum optimal, proses pelayanan masih bergantung pada sistem utama, dan potensi keterlambatan layanan tidak dapat dipantau secara sistematis
+Information Security Management
+kses sistem dibatasi melalui pembagian level pengguna dan SK kepala dinas; tidak semua pegawai memiliki akses; database dikelola secara terpusat; terdapat pelatihan bagi operator
+Adanya kontrol akses berbasis level dan pembatasan pengguna menunjukkan kesadaran terhadap keamanan data; pelatihan operator mendukung penggunaan sistem
+Belum terdapat kebijakan keamanan informasi yang terdokumentasi secara formal; masih terdapat human error dalam input data
+Resiko kesalahan data tetap terjadi dan berpotensi mempengaruhi keakuratan informasi kependudukan
+Monitoring & Event Management
+Terdapat pencatatan aktivitas pengguna (log), namun tidak semua pihak dapat mengakses; monitoring belum dilakukan secara menyeluruh dan tidak bersifat real-time
+Sudah terdapat sistem pencatatan aktivitas pengguna sebagai dasar monitoring
+Monitoring terbatas, tidak ada sistem notifikasi otomatis, serta akses terhadap data monitoring terbatas
+Gangguan atau penyimpangan tidak dapat dideteksi secara cepat sehingga dapat memperlambat penanganan masalah
+ Berdasarkan Tabel ini, dapat disimpulkan bahwa layanan TI di Dukcapil Minahasa Utara sudah berjalan dengan cukup baik, namun masih terdapat kekurangan pada pengelolaan layanan yang belum terstandarisasi sehingga berpotensi mempengaruhi konsistensi dan kualitas pelayanan, sehingga perlu dilakukan peningkatan terutama pada aspek proses dan dokumentasi.
+
+3.3 Gap Analysis
+
+Tabel 3.3 Gap Analysis
+Domain
+Kondisi Aktual
+Best Practice ITIL V4
+Gap
+Incident Management
+Penanganan gangguan dilakukan berdasarkan pengalaman operator, tanpa pencatatan formal
+Harus terdapat prosedur penanganan insiden yang terdokumentasi serta pencatatan (incident log)
+Tidak adanya prosedur tertulis dan pencatatan insiden menyebabkan penanganan tidak konsisten serta sulit dilakukan evaluasi terhadap gangguan yang berulang
+Change Enablement
+Sistem mengalami pembaruan berkala, namun tidak didokumentasikan secara formal
+Perubahan harus melalui proses yang terdokumentasi, termasuk analisis risiko dan evaluasi perubahan
+Tidak adanya dokumentasi perubahan menyebabkan sulit dilakukan kontrol dan evaluasi terhadap perubahan yang dilakukan
+Service Request Management
+Layanan sudah berjalan melalui SIAK, namun belum terdapat sistem pengelolaan permintaan layanan yang terstruktur
+Harus terdapat sistem pengelolaan permintaan layanan yang terstandarisasi serta adanya SLA
+Tidak adanya sistem terstruktur dan SLA menyebabkan permintaan layanan tidak dapat dipantau dan tidak memiliki standar waktu penyelesaian
+Information Security Management
+Akses sistem dibatasi berdasarkan level pengguna dan SK kepala dinas
+Harus terdapat kebijakan keamanan informasi yang terdokumentasi serta evaluasi berkala terhadap akses
+Tidak adanya kebijakan keamanan formal menyebabkan pengelolaan keamanan bergantung pada praktik teknis tanpa standar tertulis
+Monitoring & Event Management
+Monitoring dilakukan secara terbatas, hanya melalui pencatatan aktivitas pengguna
+Harus terdapat sistem monitoring yang terintegrasi dan real-time
+Monitoring yang terbatas menyebabkan gangguan atau aktivitas tidak normal sulit dideteksi secara cepat
+
+
+3.4 Temuan Berdasarkan Empat Dimensi ITIL v4
+
+Tabel 3.4 Temuan Berdasarkan Empat Dimensi ITIL v4
+Domain
+Temuan
+Organization & People
+Operator telah mendapatkan pelatihan sebelum menggunakan sistem serta memiliki pembagian hak akses berdasarkan SK, namun masih ditemukan human error dalam proses input data
+Information & Technology
+Sistem menggunakan SIAK yang terpusat dan aplikasi SIGAP yang masih dalam tahap pengembangan, sehingga layanan sudah terkomputerisasi tetapi belum sepenuhnya optimal
+Partners & Suppliers
+Layanan sangat bergantung pada jaringan internet, awalnya menggunakan satu provider dan kini telah menggunakan dua provider untuk meningkatkan kestabilan
+Value Streams & Processes
+Proses pelayanan sudah berjalan melalui sistem SIAK dan lebih efisien dibandingkan manual, namun belum seluruh layanan tersedia pada aplikasi SIGAP
+
+Tabel ini menunjukkan bahwa layanan IT di Dukcapil Minahasa Utara pada dasarnya sudah berjalan dengan cukup baik karena didukung oleh operator yang telah dilatih, sistem SIAK yang terpusat, serta proses pelayanan yang lebih efisien dibandingkan metode manual, namun masih terdapat beberapa keterbatasan seperti adanya human error dalam input data, aplikasi SIGAP yang belum sepenuhnya optimal karena masih dalam tahap pengembangan, serta ketergantungan pada jaringan internet yang dapat mempengaruhi kelancaran layanan sehingga perlu dilakukan peningkatan pada aspek pengelolaan sistem dan proses layanan.
+
+3.5 Business Impact
+
+Tabel 3.5 Business Impact
+Area Risiko
+Dampak terhadap Bisnis
+Gangguan jaringan pada sistem
+Pelayanan administrasi kependudukan terhambat dan waktu pelayanan menjadi lebih lama
+Human error dalam input data
+Terjadi kesalahan data pada dokumen kependudukan yang dapat mempengaruhi keakuratan informasi
+Keterbatasan layanan pada aplikasi SIGAP
+Layanan online belum optimal sehingga masyarakat masih bergantung pada pelayanan langsung
+Monitoring sistem yang terbatas
+Gangguan dan kesalahan tidak dapat dideteksi secara cepat sehingga memperlambat penanganan
+Ketergantungan pada sistem pusat
+Pengendalian sistem di tingkat daerah terbatas dan penyelesaian masalah bergantung pada pusat
+Tabel ini menunjukkan bahwa risiko seperti gangguan jaringan yang menghambat pelayanan, human error yang mempengaruhi keakuratan data, keterbatasan aplikasi SIGAP yang membuat layanan digital belum optimal, monitoring yang belum maksimal sehingga gangguan terlambat ditangani, serta ketergantungan pada sistem pusat yang membatasi kontrol daerah, secara keseluruhan berdampak langsung pada kualitas pelayanan terutama dari segi kecepatan, akurasi, dan efisiensi.
+
+3.6 Root Cause Analysis
+Root Cause Analysis dilakukan untuk mengidentifikasi penyebab utama dari permasalahan yang ditemukan dalam pelayanan teknologi informasi pada Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara. Analisis ini bertujuan untuk mengetahui faktor mendasar yang menyebabkan terjadinya gangguan, kesalahan, serta keterbatasan dalam layanan, sehingga dapat menjadi dasar dalam penyusunan rekomendasi perbaikan.
+
+3.6.1 Akar Penyebab Utama
+Tabel 3.6 Akar Penyebab Utama
+No
+Akar Penyebab Masalah
+Kondisi yang ditemukan
+Dampak Langsung
+1
+Ketergantungan pada jaringan internet
+Sistem pelayanan sangat bergantung pada koneksi jaringan dan pernah terjadi gangguan
+Pelayanan administrasi kependudukan terhambat sementara
+2
+Human error dalam proses input data
+Terjadi kesalahan seperti jenis kelamin tertukar dan kesalahan penulisan tanggal lahir
+Data pada dokumen menjadi tidak akurat
+3
+Keterbatasan aplikasi SIGAP
+Aplikasi SIGAP masih dalam tahap pengembangan dan hanya mencakup sebagian layanan
+Layanan online belum optimal dan belum mencakup seluruh pelayanan
+4
+Monitoring sistem yang terbatas
+Monitoring hanya melalui pencatatan aktivitas dan tidak dilakukan secara menyeluruh
+Gangguan atau kesalahan tidak dapat dideteksi secara cepat
+5
+Sistem terpusat
+Database dan pengelolaan sistem berada di pusat
+Kontrol sistem di tingkat daerah menjadi terbatas
+
+Dari lima akar penyebab masalah yang ditemukan, dapat disimpulkan bahwa gangguan layanan terjadi akibat kombinasi beberapa faktor yang saling berkaitan, yaitu ketergantungan tinggi pada jaringan internet, keterbatasan pengembangan aplikasi SIGAP, adanya human error dalam proses input data, monitoring sistem yang belum menyeluruh, serta sistem yang masih terpusat sehingga membatasi fleksibilitas dan respons di tingkat daerah.
+
+3.6.2 Table Hubungan Rumusan Masalah dan Akar Penyebab
+
+Tabel 3.7 Akar Penyebab Utama
+Rumusan Masalah
+Akar Penyebab
+Efektivitas layanan SIAK dan SIGAP dalam mendukung pelayanan publik
+Ketergantungan pada sistem SIAK yang terpusat serta keterbatasan aplikasi SIGAP yang masih dalam tahap pengembangan
+Keamanan layanan teknologi informasi pada pengelolaan data kependudukan
+Pengelolaan hak akses berbasis level pengguna, namun belum didukung kebijakan keamanan informasi yang terdokumentasi
+Gangguan operasional sistem SIAK dan SIGAP
+Ketergantungan pada jaringan internet sebagai infrastruktur utama
+Kesalahan penginputan data kependudukan
+Human error dalam proses input data oleh operator
+Optimalisasi manajemen hak akses pengguna
+Pembatasan akses berdasarkan level pengguna, namun belum dilakukan evaluasi dan pengelolaan akses secara sistematis
+
+Berdasarkan hasil pemetaan pada Tabel ini, diketahui bahwa permasalahan layanan SIAK dan SIGAP dipengaruhi oleh faktor sistem, jaringan, human error, serta pengelolaan hak akses yang saling berkaitan sehingga membentuk permasalahan yang bersifat kompleks dan tidak berdiri sendiri.
+
+
+BAB 4KEY FINDING 
+4.1 Risk Context 
+
+Berdasarkan hasil audit layanan teknologi informasi pada Dukcapil Minahasa Utara, diketahui bahwa operasional pelayanan administrasi kependudukan telah sepenuhnya bergantung pada sistem SIAK sebagai sistem utama dan aplikasi SIGAP sebagai layanan pendukung. Kondisi ini menunjukkan bahwa keberlangsungan pelayanan publik sangat ditentukan oleh stabilitas sistem, jaringan, serta kualitas pengelolaan layanan TI.
+Dari hasil temuan sebelumnya, terlihat bahwa meskipun sistem sudah berjalan dan mampu meningkatkan efisiensi dibandingkan proses manual, masih terdapat kesenjangan dalam pengelolaan layanan. Kesenjangan tersebut terutama terletak pada belum adanya prosedur formal, keterbatasan monitoring, serta ketergantungan pada faktor eksternal seperti jaringan dan sistem pusat.
+Jika dikaitkan dengan tujuan audit, kondisi ini menunjukkan bahwa risiko yang muncul bukan hanya berasal dari kegagalan teknologi, tetapi juga dari kelemahan dalam pengelolaan layanan TI itu sendiri. Dengan kata lain, risiko yang terjadi merupakan kombinasi antara faktor teknis, proses, dan manusia.
+Oleh karena itu, analisis risiko difokuskan pada aspek yang secara langsung berkaitan dengan rumusan masalah, yaitu:
+Efektivitas layanan sistem SIAK dan SIGAP
+keamanan data kependudukan
+gangguan operasional sistem
+kesalahan input data
+serta pengelolaan hak akses pengguna
+
+
+4.2 Business Objective
+Tujuan utama penggunaan sistem informasi di Dukcapil Minahasa Utara adalah untuk menciptakan layanan administrasi kependudukan yang cepat, akurat, dan aman, sesuai dengan tuntutan digitalisasi pelayanan public. 
+Berdasarkan hasil audit, dapat disimpulkan bahwa sistem SIAK telah mampu mendukung seluruh layanan utama, sedangkan aplikasi SIGAP masih dalam tahap pengembangan dan belum mencakup seluruh jenis pelayanan. Hal ini menunjukkan bahwa tujuan efisiensi layanan sudah mulai tercapai, namun belum optimal.
+Selain itu, dari sisi keamanan dan akurasi data, masih ditemukan adanya kesalahan input data oleh operator. Kondisi ini menunjukkan bahwa sistem belum sepenuhnya mampu meminimalisir human error, sehingga tujuan menjaga integritas data belum sepenuhnya tercapai.
+Dari sisi ketersediaan layanan (availability), gangguan jaringan masih menjadi faktor utama yang menghambat pelayanan. Hal ini menunjukkan bahwa tujuan untuk menyediakan layanan yang stabil dan tanpa gangguan masih menghadapi kendala yang cukup signifikan.
+Dengan demikian, dapat disimpulkan bahwa meskipun sistem telah memberikan nilai dalam meningkatkan efisiensi pelayanan, pencapaian tujuan secara keseluruhan masih terhambat oleh beberapa risiko utama yang perlu dikendalikan.
+
+4.3 Regulation and Standards
+
+Pengelolaan sistem informasi di Dukcapil Minahasa Utara mengikuti kebijakan nasional karena sistem SIAK bersifat terpusat. Dalam implementasinya, telah diterapkan pembagian hak akses berdasarkan level pengguna melalui Surat Keputusan Kepala Dinas, serta pelatihan bagi operator sebelum menggunakan sistem.
+Namun, jika dibandingkan dengan praktik ITIL V4 yang menekankan pengelolaan layanan berbasis proses dan dokumentasi, kondisi saat ini menunjukkan adanya kesenjangan yang cukup jelas. Sebagian besar proses layanan, seperti penanganan insiden, pengelolaan perubahan, serta monitoring sistem, masih dilakukan secara informal dan belum terdokumentasi secara sistematis.
+Hal ini memperkuat temuan sebelumnya bahwa tata kelola layanan TI belum sepenuhnya terstandarisasi. Akibatnya, pengendalian risiko menjadi kurang optimal karena tidak terdapat acuan formal dalam proses penanganan masalah maupun evaluasi layanan.
+
+4.4 Identify Assets
+Tabel 4.1 Identify Assets
+
+No
+Aset
+Deskripsi
+1
+Sistem SIAK
+Sistem utama pelayanan dan pengelolaan data kependudukan
+2
+Aplikasi SIGAP
+Aplikasi layanan online yang masih dalam tahap pengembangan
+3
+Data Kependudukan
+Data sensitif masyarakat (KK, KTP, Akta)
+4
+Jaringan Internet
+Infrastruktur utama akses sistem
+5
+Perangkat Komputer
+Sarana operasional pelayanan
+6
+Operator Sistem
+Pengguna sistem dengan hak akses tertentu
+
+
+4.5 Identify Threats
+Tabel 4.2 Identify Threats
+No
+Threats
+Deskripsi
+1
+Gangguan Jaringan 
+Koneksi internet tidak stabil
+2
+Human Error
+Kesalahan input data oleh operator
+3
+Keterbatasan SIGAP
+Layanan belum sepenuhnya tersedia
+4
+Gangguan Sistem Pusat
+Ketergantungan pada server nasional
+5
+Pengelolaan Akses
+Risiko kesalahan penggunaan hak akses
+
+Ancaman yang diidentifikasi secara langsung berkaitan dengan akar penyebab masalah yang telah ditemukan sebelumnya. Gangguan jaringan dan sistem pusat merupakan ancaman eksternal yang sulit dikendalikan, namun memiliki dampak besar terhadap pelayanan. Sementara itu, human error dan pengelolaan akses merupakan ancaman internal yang berkaitan dengan proses dan tata kelola layanan. Hal ini menunjukkan bahwa risiko tidak hanya berasal dari teknologi, tetapi juga dari cara sistem tersebut dikelola.
+
+4.6 Possible Impact
+Tabel 4.3 Possible Impact
+No
+Dampak
+Deskripsi 
+1
+Terhentinya pelayanan administrasi
+Gangguan pada jaringan atau sistem menyebabkan proses pelayanan tidak dapat dilakukan karena seluruh layanan bergantung pada akses sistem SIAK
+2
+Penurunan akurasi data kependudukan
+Kesalahan dalam proses input data oleh operator menyebabkan informasi pada dokumen kependudukan menjadi tidak valid
+3
+Layanan digital tidak optimal
+Keterbatasan fitur pada aplikasi SIGAP menyebabkan masyarakat belum dapat memanfaatkan layanan secara penuh secara online
+4
+Keterlambatan penyelesaian layanan
+Proses pelayanan menjadi lebih lambat karena gangguan tidak dapat ditangani secara cepat akibat monitoring yang terbatas
+5
+Keterbatasan pengendalian operasional
+Ketergantungan pada sistem pusat menyebabkan pihak daerah tidak dapat secara langsung mengatasi gangguan yang terjadi
+
+Dampak yang ditimbulkan dari setiap ancaman menunjukkan bahwa risiko yang terjadi berpengaruh langsung terhadap kualitas pelayanan publik, terutama dalam hal kecepatan, akurasi, dan efisiensi. Hal ini sejalan dengan hasil analisis sebelumnya yang menunjukkan bahwa gangguan jaringan dan kesalahan data merupakan faktor utama yang mempengaruhi kepuasan masyarakat terhadap layanan Dukcapil.
+
+4.7 Identify Vulnerabilities
+Tabel 4.4 Identify Vulnerabilities
+Vulnerability
+Kategori 
+Dampak 
+Ketergantungan tinggi pada jaringan internet tanpa mekanisme alternatif layanan
+Infrastruktur
+Pelayanan administrasi tidak dapat berjalan ketika terjadi gangguan jaringan
+Proses input data masih bergantung pada operator tanpa validasi sistem yang kuat
+Organisasi
+Terjadi kesalahan data kependudukan yang mempengaruhi keakuratan dokumen
+Aplikasi SIGAP belum mencakup seluruh layanan dan masih dalam tahap pengembangan
+Sistem
+Layanan digital belum optimal dan masyarakat masih bergantung pada pelayanan langsung
+Tidak adanya SOP formal dalam penanganan insiden dan pengelolaan layanan
+Organisasi
+Penanganan masalah tidak konsisten dan sulit dilakukan evaluasi
+Monitoring sistem belum dilakukan secara real-time dan tidak terintegrasi
+Proses
+Gangguan atau kesalahan tidak dapat dideteksi secara cepat sehingga memperlambat penanganan
+
+Kerentanan yang ditemukan menunjukkan bahwa sebagian besar risiko disebabkan oleh kelemahan dalam pengelolaan layanan, bukan hanya pada teknologi itu sendiri. Tidak adanya SOP dan monitoring yang memadai memperkuat temuan sebelumnya bahwa proses layanan masih bersifat informal. Hal ini menyebabkan potensi kesalahan menjadi lebih sulit dikendalikan dan dievaluasi.
+
+4.8 Likelihood and Impact
+Tabel 4.5 Likelihood and Impact
+Likelihood
+Impact
+Risk Level
+High
+High
+Critical
+High
+Medium
+High
+Medium
+High
+High
+Medium
+Medium
+Moderate
+Low
+High
+Moderate
+High
+Low
+Moderate
+Medium
+Low
+Low
+Low
+Medium
+Low
+Low
+High
+Low
+
+4.9 Risk Tabel
+Tabel 4.6 Risk Tabel
+Risk ID
+Asset
+Threats
+Vulnerability
+Impact
+Likelihood
+Risk Level
+Suggested Controls
+R1
+Jarinagn Internet
+Gangguan jaringan
+Ketergantungan pada 1–2 provider jaringan
+High 
+High 
+Critical 
+Multi ISP redundancy, monitoring real-time, SOP gangguan
+R2
+Data Kependudukan
+Human error input
+Validasi sistem lemah (kesalahan jenis kelamin, tanggal lahir)
+High
+
+High
+
+Critical 
+Validasi otomatis, dropdown input, pelatihan operator
+R3
+Aplikasi SIGAP
+Sistem masih terbatas
+SIGAP masih tahap pengembangan dan fitur terbatas
+Medium
+
+Medium
+
+Moderate  
+Pengembangan fitur SIGAP, integrasi penuh dengan SIAK
+R4
+Sistem SIAK
+Gangguan sistem pusat
+Database terpusat di pusat (kontrol daerah terbatas)
+High
+Medium
+
+High 
+Koordinasi pusat, fallback manual, backup operasional
+R5
+Hak Akses Sistem
+Penyalahgunaan akses
+Tidak semua pegawai memiliki akses & level berbeda
+High 
+High 
+Critical 
+
+Audit akses berkala, role-based access control
+R6
+Monitoring Sistem
+Keterlambatan deteksi gangguan
+Monitoring tidak real-time dan terbatas
+High 
+Medium 
+High
+
+Implementasi monitoring real-time + alert system
+R7
+Proses Layanan IT
+Tidak adanya SOP
+Proses layanan belum terstandarisasi
+
+High 
+Medium 
+High
+
+Penyusunan SOP & SLA layanan TI
+R8
+Perubahan Sistem
+Error setelah update
+Tidak ada dokumentasi perubahan sistem
+Medium 
+Medium  
+Modrate
+
+Change management & dokumentasi update
+R9
+SDM Operator
+Ketergantungan operator
+Tidak semua pegawai memiliki akses & kemampuan
+Medium 
+Medium 
+
+Moderate
+
+Pelatihan berkala & distribusi akses
+R10
+Infrastruktur TI
+Ketergantungan sistem nasional
+Sistem layanan tergantung pusat
+High 
+Medium 
+High 
+SLA dengan pusat + prosedur fallback
+
+Kerentanan yang ditemukan menunjukkan bahwa sebagian besar risiko disebabkan oleh kelemahan dalam pengelolaan layanan, bukan hanya pada teknologi itu sendiri. Tidak adanya SOP dan monitoring yang memadai memperkuat temuan sebelumnya bahwa proses layanan masih bersifat informal. Hal ini menyebabkan potensi kesalahan menjadi lebih sulit dikendalikan dan dievaluasi.
+
+BAB 5RECOMMENDATION 
+5.1 Pendekatan Perbaikan
+Berdasarkan hasil analisis risiko terhadap layanan teknologi informasi di Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara, diketahui bahwa permasalahan yang terjadi tidak hanya berasal dari aspek teknis sistem, tetapi juga dipengaruhi oleh lemahnya tata kelola layanan, belum adanya standardisasi proses, serta tingginya ketergantungan terhadap infrastruktur eksternal seperti jaringan internet dan sistem pusat.
+Hasil evaluasi menunjukkan bahwa sebagian besar risiko berada pada kategori High hingga Critical, terutama pada aspek jaringan internet, data kependudukan, hak akses sistem, serta ketergantungan terhadap sistem nasional. Kondisi ini mengindikasikan bahwa layanan TI yang berjalan saat ini masih bersifat operasional dan reaktif, serta belum didukung oleh kontrol internal yang kuat dan terstruktur.
+Pendekatan perbaikan dalam penelitian ini mengacu pada prinsip dalam ITIL V4, dengan fokus pada:
+Penguatan kontrol preventive, detective, dan corrective 
+Standardisasi proses layanan TI melalui SOP dan SLA 
+Pengurangan ketergantungan terhadap single point of failure 
+Peningkatan keamanan dan validasi data kependudukan 
+Penguatan sistem monitoring dan respon insiden 
+Penerapan manajemen perubahan dan kontrol akses berbasis peran 
+Tujuan utama dari pendekatan ini adalah mentransformasikan pengelolaan layanan TI dari reactive service management menjadi controlled dan managed service management yang mampu menjamin stabilitas layanan publik.
+
+5.2 Rekomendasi Berdasarkan Risiko
+Table 5.1 Recomendasi Berdasarkan Risiko
+Risk ID
+Risk Level 
+Rekomendasi Utama
+Prioritas
+R1
+Critical 
+Multi ISP redundancy, monitoring real-time, SOP gangguan
+
+R2
+Critical
+Validasi otomatis, dropdown input, pelatihan operator
+High 
+R3
+Moderate 
+Pengembangan  SIGAP dan integrasi penuh dengan SIAK
+High 
+R4
+High 
+Koordinasi pusat, fallback manual, backup operasional
+Medium 
+R5
+Critical
+Role-Based Access Control dan audit akses
+High 
+R6
+High 
+Monitoring real-time dan alert system
+High 
+R7
+High 
+Penyusunan SOP dan SLA layanan TI
+High 
+R8
+Moderate 
+Change management dan dokumentasi perubahan
+Moderate 
+R9
+Moderate 
+Pelatihan operator dan distribusi akses
+Moderate 
+R10
+High 
+SLA dengan pusat dan prosedur fallback
+High 
+Tabel ini menunjukkan bahwa mayoritas risiko berada pada tingkat High dan Critical, yang berarti memiliki dampak langsung terhadap keberlangsungan pelayanan publik. Secara umum, risiko yang muncul dapat dikelompokkan menjadi tiga kategori utama:
+Ketergantungan Sistem dan Infrastruktur (R1, R4, R10) 
+Kelemahan Kontrol Internal (R2, R5, R6, R7) 
+Keterbatasan Sistem dan SDM (R3, R8, R9) 
+Hal ini menunjukkan bahwa permasalahan layanan TI tidak hanya bersifat teknis, tetapi juga berkaitan dengan tata kelola dan manajemen layanan yang belum matang.
+5.3 Rekomendasi Per Domain Risiko
+Infrastruktur dan Jaringan (R1, R10)
+Untuk mengurangi ketergantungan terhadap jaringan dan sistem pusat, diperlukan implementasi multi ISP redundancy guna memastikan ketersediaan layanan. Selain itu, perlu dilakukan monitoring jaringan secara real-time serta penyusunan SOP penanganan gangguan. Dukcapil juga perlu menetapkan SLA dengan pihak penyedia layanan dan pusat sistem guna memastikan respon yang cepat saat terjadi gangguan.
+Data Kependudukan (R2)
+Untuk meminimalisir kesalahan input data, diperlukan penerapan validasi otomatis pada sistem seperti format input, dropdown selection, serta auto-fill. Selain itu, perlu dilakukan pelatihan operator secara berkala serta audit kualitas data untuk menjaga akurasi informasi kependudukan.
+Aplikasi SIGAP (R3)
+Pengembangan aplikasi SIGAP perlu dipercepat agar dapat mencakup seluruh layanan administrasi kependudukan. Selain itu, integrasi penuh dengan sistem SIAK perlu dilakukan untuk menghindari duplikasi data dan meningkatkan efisiensi layanan
+Sistem SIAK (R4)
+Mengingat sistem bersifat terpusat, diperlukan penguatan koordinasi dengan pihak pusat. Selain itu, perlu disiapkan mekanisme fallback manual serta prosedur eskalasi ketika terjadi gangguan pada sistem pusat.
+Hak Akses Sistem (R5)
+Diperlukan implementasi Role-Based Access Control (RBAC) untuk memastikan bahwa setiap pengguna hanya memiliki akses sesuai dengan tugasnya. Selain itu, audit akses secara berkala serta logging aktivitas pengguna perlu dilakukan untuk meningkatkan keamanan sistem.
+Monitoring Sistem (R6)
+Perlu dilakukan implementasi sistem monitoring yang terintegrasi dan real-time, disertai dengan alert system untuk mendeteksi gangguan secara cepat. Dashboard monitoring juga diperlukan untuk memudahkan pengawasan layanan.
+Proses Layanan TI (R7)
+Dukcapil perlu menyusun SOP untuk seluruh proses layanan TI serta menetapkan SLA sebagai standar waktu penyelesaian layanan. Hal ini penting untuk memastikan konsistensi dan kualitas layanan.
+Change Management (R8)
+Setiap perubahan sistem harus melalui proses dokumentasi, analisis risiko, serta approval sebelum implementasi. Selain itu, perlu dilakukan evaluasi pasca perubahan untuk memastikan tidak terjadi gangguan baru.
+SDM Operator (R9)
+Perlu dilakukan pelatihan operator secara berkala serta distribusi akses berdasarkan kompetensi. Hal ini bertujuan untuk mengurangi ketergantungan pada operator tertentu.
+5.4 Traceability Matrix
+Table 5.2 Traceability Matrix
+Risk ID
+Finding
+Root Cause
+Recomemndation
+Control Type
+R1
+Gangguan Jaringan
+Ketergantungan provider, Monitoring belum optimal, Tidak ada SOP
+Multi ISP redundancy, Monitoring real-time, SOP gangguan & fallback
+Preventive, Detective, Corrective
+R2
+Human Error Input, Kesalahan data, Data tidak akurat
+Validasi lemah, Tidak ada audit, Kesalahan input
+Validasi otomatis & dropdown, Audit kualitas data, Perbaikan data & pelatihan
+Preventive, Detective, Corrective
+R3
+SIGAP terbatas
+Sistem belum matang
+Pengembangan fitur
+Detective
+R4
+Gangguan pusat, Layanan terhenti
+Sistem terpusat, Tidak ada fallback
+Koordinasi pusat, Fallback manual
+Preventive, Corrective
+R5
+Penyalahgunaan akses, Akses tidak terkontrol
+Kontrol lemah, Tidak ada audit
+RBAC, Audit akses
+Preventive, Detective
+R6
+Monitoring lambat
+Tidak real-time
+Monitoring system
+Detective
+R7
+Tidak ada SOP
+Tidak standar
+SOP & SLA
+Preventive
+R8
+Error setelah update
+Tidak ada kontrol perubahan
+Change management
+Preventive
+R9
+Ketergantungan operator
+Kompetensi tidak merata
+Pelatihan operator
+Corrective
+R10
+Ketergantungan pusat
+Sistem nasional
+SLA & fallback
+Corrective
+Tabel ini mengintegrasikan hubungan antara risiko, temuan, akar penyebab, serta rekomendasi perbaikan yang diklasifikasikan berdasarkan jenis kontrol. Setiap risiko tidak hanya diidentifikasi, tetapi juga ditelusuri hingga akar penyebabnya dan diberikan solusi yang sesuai. Kontrol preventive berfungsi untuk mencegah terjadinya risiko sejak awal, seperti implementasi RBAC dan validasi sistem. Kontrol detective digunakan untuk mendeteksi gangguan melalui monitoring dan audit sistem. Sedangkan kontrol corrective digunakan untuk memperbaiki atau memulihkan sistem ketika gangguan telah terjadi. Pendekatan ini memastikan bahwa pengelolaan layanan TI dilakukan secara menyeluruh, tidak hanya reaktif tetapi juga proaktif dan terkontrol.
+
+5.5 Prioritas Implementasi
+Tabel 5.3 Prioritas Implementasi
+Risk ID
+Priority
+Waktu Implementasi
+Owner
+R1
+High
+0-3 bulan
+Tim IT & Provider
+R2
+High 
+0-3 bulan
+Operator & Tim IT
+R3
+Medium 
+3-6 bulan
+Dukcapil & Tim IT
+R4
+High 
+0-3 bulan
+Admin Sistem
+R5
+High 
+0-3 bulan
+Tim IT
+R6
+High 
+0-3 bulan
+Manajemen
+R7
+High 
+0-3 bulan
+Dukcapil & Pusat
+R8
+Medium 
+3-6 bulan
+Developer SIGAP
+R9
+Medium 
+3-6 bulan
+Tim IT
+R10
+High 
+0-3 bulan
+HR & Tim IT
+Prioritas implementasi ditentukan berdasarkan tingkat risiko dan dampaknya terhadap pelayanan publik. Risiko dengan tingkat High harus segera ditangani dalam jangka waktu 0–3 bulan karena memiliki potensi mengganggu operasional layanan secara langsung. Sementara itu, risiko dengan tingkat Moderate dapat ditangani secara bertahap dalam jangka waktu 3–6 bulan sebagai bagian dari peningkatan berkelanjutan.
+
+BAB 6OVERALL ASSESSMENT
+6.1 Overall Assessment Berdasarkan Domain Praktik ITIL v4
+Penilaian pada bagian ini disusun sebagai instrumen evaluasi terhadap tingkat kematangan layanan teknologi informasi di Dinas Kependudukan dan Pencatatan Sipil Kabupaten Minahasa Utara. Hal ini dilakukan karena instansi belum memiliki standar penilaian formal seperti maturity level atau indikator kuantitatif berbasis IT service management. Skala penilaian menggunakan rentang 1 sampai 5, dengan interpretasi sebagai berikut:
+1 (Sangat Kurang) → Proses tidak berjalan 
+2 (Kurang Baik) → Proses berjalan namun tidak terstruktur 
+3 (Cukup Baik) → Proses berjalan namun belum terdokumentasi 
+4 (Baik) → Proses terstruktur dan sebagian terdokumentasi 
+5 (Sangat Baik) → Proses optimal, terukur, dan terstandarisasi penuh 
+Penilaian ini disusun berdasarkan hasil wawancara, observasi, serta analisis terhadap praktik ITIL V4 yang relevan.
+
+Tabel 6.1 Overall Assessment Berdasarkan Domain Praktik ITIL v4
+Domaian ITIL v4
+Survey/Point Assessment
+Penilaian
+Keterangan
+Incident Management
+- Gangguan jaringan pernah terjadi dan ditangani langsung oleh operator- Sudah ada peningkatan dari 1 menjadi 2 provider jaringan- Tidak ada pencatatan insiden secara formal
+Cukup Baik (3/5)
+Penanganan insiden sudah berjalan secara responsif berdasarkan pengalaman operator, namun belum memiliki prosedur baku, klasifikasi insiden, maupun dokumentasi insiden (incident log). Hal ini menyebabkan evaluasi insiden sulit dilakukan secara sistematis dan berulang
+Change Enablement
+- Sistem mengalami update berkala dari pusat dan aplikasi SIGAP- Tidak terdapat dokumentasi perubahan sistem- Tidak ada analisis risiko sebelum perubahan
+Cukup Baik (3/5)
+Perubahan sistem sudah dilakukan secara rutin, namun belum didukung oleh proses change management yang terstruktur seperti dokumentasi perubahan, risk assessment, dan evaluasi pasca implementasi, sehingga berpotensi menimbulkan gangguan baru
+Service Request Management
+- Semua layanan utama menggunakan SIAK- SIGAP masih terbatas pada sebagian layanan- Permintaan layanan tidak tercatat secara formal
+Kurang Baik (2/5)
+Layanan sudah berjalan dengan baik secara operasional, namun tidak terdapat sistem pencatatan permintaan layanan, tidak ada SLA, serta proses masih bersifat informal sehingga sulit dilakukan monitoring dan evaluasi layanan
+Information Security Management
+- Hak akses dibatasi melalui SK kepala dinas- Tidak semua pegawai memiliki akses sistem- Masih terdapat human error dalam input data- Keamanan database dikelola di pusat
+Cukup Baik (3/5)
+Pengelolaan keamanan sudah memiliki kontrol dasar seperti pembatasan akses dan pelatihan operator, namun belum didukung kebijakan keamanan formal dan kontrol validasi sistem yang kuat untuk meminimalisir kesalahan data
+Monitoring & Event Management
+- Terdapat pencatatan aktivitas pengguna- Monitoring belum real-time- Tidak ada sistem notifikasi otomatis
+Cukup Baik (3/5)
+Monitoring sistem sudah dilakukan secara terbatas melalui log aktivitas, namun belum terintegrasi dan tidak real-time, sehingga deteksi gangguan masih bersifat reaktif dan terlambat
+Tabel ini menunjukkan bahwa layanan TI di Dukcapil Minahasa Utara sudah berjalan, namun sebagian besar masih berada pada tingkat cukup baik karena belum memiliki SOP, SLA, dan dokumentasi yang terstruktur. Hal ini menyebabkan proses belum dapat dikontrol dan dievaluasi secara optimal. 
+6.2 Hasil Wawancara Dari Narasumber Bapak Jolly Tuwaidan 
+Table 6.2 Pertanyaan dan Jawaban Wawancara 
+No
+Pertanyaan 
+Jawaban/Hasil
+1
+Apa saja sistem informasi yang digunakan di Dukcapil?
+Kalau aplikasi untuk pelayanan dari kementrian siak dari kantor pusat. kalau dari minut sendiri, pelayanan online.. aplikasi android - sigap dukcapil.
+2
+Sejak kapan sistem digunakan?
+SIAK dari 2008, SIGAP baru akhir tahun lalu, masih dalam tahap pengembangan/uji coba.
+3
+Siapa yang bertanggung jawab mengelola sistem?
+Yang bertanggung jawab adalah kepala dinas. Database hanya dipusat saja.
+4
+Apakah ada tim IT khusus?
+ ada ADB untuk melayani.
+5
+Apakah ada pelatihan bagi pegawai?
+Ada pelatihan khusus sebelum menggunakan aplikasi tersebut.
+6
+Mengapa sistem digunakan?
+Alasannya untuk mempermudah dan mempercepat, efisiensi.. kalau tidak ada si akan ribet
+7
+Bagaimana sistem membantu pelayanan?
+Kalau tidak ada SI semua akan manual, pengarsipan dilakukan secara manual.. dimana itu akan sangat lama
+8
+Jenis layanan apa saja?
+Total ada 20 layanan, seperti KK, KTP, Akta Kelahiran, Akta Kematian, Akta Perkawinan, dll
+9
+Apakah terhubung ke database pusat?
+Semua pelayanan, KK, KTP, AKTE KELAHIRAN, pokoknya semua.. kalau sigap hanya 4/5 pelayanan yang ada. masih terbatas
+10
+Siapa yang memiliki akses sistem?
+Operator, ada SK kepala dinas. Tidak semua pegawai dukcapil bisa akses. karena sistem tidak bisa sembarangan karena menyangkut data pribadi.
+11
+Apakah setiap pegawai punya akun login?
+Tidak semua memiliki akses login.
+12
+Apakah ada tingkatan hak akses?
+Ada tingkatan level untuk pembagian hak akses
+13
+Bagaimana pembagian hak akses?
+Tentunya ada.. disini masih terbagi, ada yang di perusahan capil, ada yang hanya bisa duk dan ada yang bisa semua.
+14
+Pernahkah terjadi gangguan sistem?
+Pasti pernah, jaringan salah satu contohnya, hanya menggunakan satu jaringan yaitu telkom fiber.. tapi sekarang sudah menggunakan 2 jaringan berbeda.
+15
+Bagaimana backup data dilakukan?
+Seharusnya iya, tapi yang backup di pusat, keamanan secara database itu dipusat. kalau disini hanya agar datanya tidak bocor saja.
+16
+Apakah ada human error?
+Human error pasti ada, biasanya jenis kelamin tertukar.. antara operator atau orang yang menulis, tanggal lahir typo
+17
+Apakah aktivitas pengguna dicatat?
+Ada, aktivitas pengguna tapi tidak semua bisa lihat.
+18
+Apakah ada update sistem?
+Ada, tahun lalu aplikasi sigap 2/3x update. tahun ini juga akan ada.
+19
+Apakah ada rencana pelatihan atau peningkatan kompetensi pegawai?
+Kalau daru pusat ada, sudah terjadwalkan bulan juni itu dari pusat langsung. In house training, apa yang didapat materi dari pusat akan kembali disini.
+20
+Apakah ada evaluasi sistem?
+Evaluasi pasti ada, namun karena sistemnya nasional jadi evaluasinya nanti pas bintek, apa yang harus diselesaikan dan apa yang harus diperbaharui.
+Tabel ini menunjukkan bahwa penggunaan sistem SIAK dan SIGAP sudah mendukung pelayanan, namun masih terdapat kendala seperti ketergantungan pada sistem pusat, human error, keterbatasan SIGAP, serta monitoring dan pengelolaan akses yang belum optimal. 
+
+
+
+DAFTAR PUSTAKA
+[1]S. De Haes and W. Van Grembergen, “Enterprise Governance of Information Technology,” Enterp. Gov. Inf. Technol., 2009, doi: 10.1007/978-0-387-84882-2.
+[2]AXELOS, ITIL 4 Foundation ITIL 4 Edition. ITIL OFFICIIAL PUBLISHER.
+[3]Agustina, “Universitas medan area tahun 2017 universitas medan area,” Skripsi, no. 24, pp. 31–40, 2017.
+[4]Pemerintah Republik Indonesia, “Peraturan Menteri Dalam Negeri Republik Indonesia Nomor 95 Tahun 2019 tentang Sistem Informasi Administrasi Kependudukan,” Kementeri. Dalam Negeri Republik Indones., vol. 65, no. 1114, p. 2019, 2019.
+[5]A. R. Otero, Inforation Technology Control and Audit. 
+[6]C. Agutter, ITIL 4 ESSENTIALS. 
+[7]P. Weil and J. W. Ross, “IT Governance : How Top Performers Manage IT,” Int. J. Eletronic Gov. Res., vol. 1, no. 4, pp. 63–67, 2005.
+[8]S. P. Collins et al., IT Service Management Global Best Practices – Volume 1, First edit., vol. 1, no. 2020. Publisher: Van Haren Publishing (info@vanharen.net), 2021.

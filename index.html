@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Audit Dashboard - Dukcapil Minahasa Utara</title>
+    
+    <!-- Fonts: Inter for premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class='bx bx-shield-quarter'></i>
+                    <span>IT Audit Dukcapil</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-target="overview">
+                    <i class='bx bx-grid-alt'></i>
+                    <span>Overview</span>
+                </li>
+                <li data-target="risk-register">
+                    <i class='bx bx-error-circle'></i>
+                    <span>Risk Register</span>
+                </li>
+                <li data-target="audit-findings">
+                    <i class='bx bx-search-alt-2'></i>
+                    <span>Audit Findings</span>
+                </li>
+                <li data-target="recommendations">
+                    <i class='bx bx-check-shield'></i>
+                    <span>Recommendations</span>
+                </li>
+                <li data-target="interviews">
+                    <i class='bx bx-message-dots'></i>
+                    <span>Interview Results</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="header-title">
+                    <h1 id="page-title">Executive Summary</h1>
+                    <p class="subtitle">Evaluasi Framework ITIL V4 - SIAK & SIGAP</p>
+                </div>
+                <div class="user-info">
+                    <div class="status-badge pulse">
+                        <span class="dot"></span> Audit Active
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Sections -->
+            <div class="content-wrapper">
+                
+                <!-- 1. Overview Section -->
+                <section id="overview" class="dashboard-section active">
+                    <!-- Top Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card glass">
+                            <div class="metric-icon critical">
+                                <i class='bx bx-error'></i>
+                            </div>
+                            <div class="metric-data">
+                                <h3>Critical Risks</h3>
+                                <h2 id="metric-critical">0</h2>
+                            </div>
+                        </div>
+                        <div class="metric-card glass">
+                            <div class="metric-icon high">
+                                <i class='bx bx-trending-down'></i>
+                            </div>
+                            <div class="metric-data">
+                                <h3>High Risks</h3>
+                                <h2 id="metric-high">0</h2>
+                            </div>
+                        </div>
+                        <div class="metric-card glass">
+                            <div class="metric-icon moderate">
+                                <i class='bx bx-minus-circle'></i>
+                            </div>
+                            <div class="metric-data">
+                                <h3>Moderate Risks</h3>
+                                <h2 id="metric-moderate">0</h2>
+                            </div>
+                        </div>
+                        <div class="metric-card glass">
+                            <div class="metric-icon score">
+                                <i class='bx bx-bar-chart-alt-2'></i>
+                            </div>
+                            <div class="metric-data">
+                                <h3>Avg Maturity</h3>
+                                <h2 id="metric-score">0.0<span class="small-text">/5</span></h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Area -->
+                    <div class="charts-grid">
+                        <div class="chart-card glass">
+                            <div class="card-header">
+                                <h3>Overall Assessment (ITIL V4)</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="radarChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card glass">
+                            <div class="card-header">
+                                <h3>Risk Level Distribution</h3>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Risks Table -->
+                    <div class="table-card glass">
+                        <div class="card-header">
+                            <h3>Top 3 Critical Risks</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Risk ID</th>
+                                        <th>Asset</th>
+                                        <th>Threat</th>
+                                        <th>Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="top-risks-body">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Risk Register Section -->
+                <section id="risk-register" class="dashboard-section">
+                    <div class="table-card glass full-height">
+                        <div class="card-header with-actions">
+                            <h3>Risk Register Matrix</h3>
+                            <div class="filter-group">
+                                <label for="risk-filter">Filter by Level:</label>
+                                <select id="risk-filter">
+                                    <option value="all">All Levels</option>
+                                    <option value="Critical">Critical</option>
+                                    <option value="High">High</option>
+                                    <option value="Moderate">Moderate</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table interactive">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Asset</th>
+                                        <th>Threat</th>
+                                        <th>Vulnerability</th>
+                                        <th>Impact</th>
+                                        <th>Likelihood</th>
+                                        <th>Risk Level</th>
+                                        <th>Suggested Controls</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="risk-table-body">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Audit Findings Section -->
+                <section id="audit-findings" class="dashboard-section">
+                    <div class="findings-grid" id="findings-container">
+                        <!-- Populated by JS with Cards -->
+                    </div>
+                </section>
+
+                <!-- 4. Recommendations Section -->
+                <section id="recommendations" class="dashboard-section">
+                    <div class="timeline-card glass">
+                        <div class="card-header">
+                            <h3>Action Plan & Implementation Priorities</h3>
+                        </div>
+                        <div class="timeline-container" id="timeline-container">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. Interviews Section -->
+                <section id="interviews" class="dashboard-section">
+                    <div class="table-card glass full-height">
+                        <div class="card-header">
+                            <h3>Hasil Wawancara Langsung (Narasumber: Bpk. Jolly Tuwaidan)</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table interactive">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Hasil & Konfirmasi Wawancara</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="interview-table-body">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
