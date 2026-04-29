@@ -243,7 +243,11 @@ function populateTopRisks() {
             <td><strong>${risk.id}</strong></td>
             <td>${risk.asset}</td>
             <td>${risk.threat}</td>
+            <td>${risk.vulnerability}</td>
+            <td>${risk.impact}</td>
+            <td>${risk.likelihood}</td>
             <td><span class="badge ${getBadgeClass(risk.level)}">${risk.level}</span></td>
+            <td>${risk.control}</td>
         `;
         tbody.appendChild(tr);
     });
